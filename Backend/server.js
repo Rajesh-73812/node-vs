@@ -1,13 +1,13 @@
-const express=require("express")
-const dotenv=require("dotenv")
-dotenv.config()
-const app=express()
+const express = require("express");
+const app = express();
 
+// middleware
+app.use(express.json());
+
+// test route
 app.get("/", (req, res) => {
-    console.log("server running.....");
-    res.send("Hello from Express!");
+  res.send("✅ Server running on Vercel!");
 });
 
-app.listen(process.env.PORT,()=>{
-    console.log(`connected on port ${process.env.PORT}`)
-})
+// ✅ Export app (don’t call app.listen here)
+module.exports = app;
